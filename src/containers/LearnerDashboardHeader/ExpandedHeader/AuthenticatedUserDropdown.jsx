@@ -43,28 +43,8 @@ export const AuthenticatedUserDropdown = () => {
               <Dropdown.Divider />
             </>
           )}
-
-          {!dashboard && getConfig().CAREER_LINK_URL && (
-            <Dropdown.Item href={`${getConfig().CAREER_LINK_URL}`}>
-              {formatMessage(messages.career)}
-              <Badge className="px-2 mx-2" variant="warning">
-                {formatMessage(messages.newAlert)}
-              </Badge>
-            </Dropdown.Item>
-          )}
-          <Dropdown.Item href={`${getConfig().ACCOUNT_PROFILE_URL}/u/${authenticatedUser.username}`}>
-            {formatMessage(messages.profile)}
-          </Dropdown.Item>
-          <Dropdown.Item href={getConfig().ACCOUNT_SETTINGS_URL}>
-            {formatMessage(messages.account)}
-          </Dropdown.Item>
-          {getConfig().ORDER_HISTORY_URL && (
-            <Dropdown.Item href={getConfig().ORDER_HISTORY_URL}>
-              {formatMessage(messages.orderHistory)}
-            </Dropdown.Item>
-          )}
           <Dropdown.Divider />
-          <Dropdown.Item href={getConfig().LOGOUT_URL}>
+          <Dropdown.Item href={`https://neontoservices.ciamlogin.com/neontoservices.onmicrosoft.com/oauth2/v2.0/logout?post_logout_redirect_uri=${getConfig().LMS_BASE_URL}/logout`}>
             {formatMessage(messages.signOut)}
           </Dropdown.Item>
         </Dropdown.Menu>

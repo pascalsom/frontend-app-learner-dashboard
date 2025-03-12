@@ -31,14 +31,9 @@ export const CollapseMenuBody = ({ isOpen }) => {
 
   return (
     <div className="d-flex flex-column shadow-sm nav-small-menu">
-      <Button as="a" href={`${getConfig().LMS_BASE_URL}/dashboard/`} variant="inverse-primary">
+      <Button as="a" href={`${getConfig().LMS_BASE_URL}/`} variant="inverse-primary">
         {formatMessage(messages.course)}
       </Button>
-      {programsEnabled && (
-        <Button as="a" href={urls.programsUrl()} variant="inverse-primary">
-          {formatMessage(messages.program)}
-        </Button>
-      )}
       <Button
         as="a"
         href={urls.baseAppUrl(courseSearchUrl)}
@@ -55,37 +50,6 @@ export const CollapseMenuBody = ({ isOpen }) => {
           {!!dashboard && (
             <Button as="a" href={dashboard.url} variant="inverse-primary">
               {formatMessage(messages.dashboard)}
-            </Button>
-          )}
-          {!dashboard && getConfig().CAREER_LINK_URL && (
-            <Button href={`${getConfig().CAREER_LINK_URL}`}>
-              {formatMessage(messages.career)}
-              <Badge className="px-2 mx-2" variant="warning">
-                {formatMessage(messages.newAlert)}
-              </Badge>
-            </Button>
-          )}
-          <Button
-            as="a"
-            href={`${getConfig().LMS_BASE_URL}/u/${authenticatedUser.username}`}
-            variant="inverse-primary"
-          >
-            {formatMessage(messages.profile)}
-          </Button>
-          <Button
-            as="a"
-            href={`${getConfig().LMS_BASE_URL}/account/settings`}
-            variant="inverse-primary"
-          >
-            {formatMessage(messages.account)}
-          </Button>
-          {getConfig().ORDER_HISTORY_URL && (
-            <Button
-              as="a"
-              variant="inverse-primary"
-              href={getConfig().ORDER_HISTORY_URL}
-            >
-              {formatMessage(messages.orderHistory)}
             </Button>
           )}
           <Button
