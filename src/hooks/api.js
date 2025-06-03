@@ -51,6 +51,25 @@ export const useProgramsConfig = () => {
   return config;
 };
 
+export const useUserMetadata = () => {
+  const [userMetadata, setUserMetadata] = React.useState({});
+
+  const fetchUserMetadata = React.useCallback(async () => {
+    try {
+      const { data } = await api.getUserMetadata();
+      setUserMetadata(data);
+    } catch (error) {
+      logError(`Error accessing user metadata: ${error.message}`);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    fetchUserMetadata();
+  }, [fetchUserMetadata]);
+
+  return userMetadata;
+};
+
 export const useNewEntitlementEnrollment = (cardId) => {
   const { uuid } = reduxHooks.useCardEntitlementData(cardId);
   const onSuccess = module.useInitializeApp();

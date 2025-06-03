@@ -18,11 +18,12 @@ export const ExpandedHeader = () => {
   const isCollapsed = useIsCollapsed();
 
   const { enabled: programsEnabled } = apiHooks.useProgramsConfig();
+  const { metadata: userMetadata } = apiHooks.useUserMetadata();
 
   const exploreCoursesClick = findCoursesNavClicked(
     urls.baseAppUrl(courseSearchUrl),
   );
-
+  console.log(userMetadata)
   if (isCollapsed) {
     return null;
   }
@@ -58,6 +59,15 @@ export const ExpandedHeader = () => {
           onClick={exploreCoursesClick}
         >
           {formatMessage(messages.discoverNew)}
+        </Button>
+
+        <Button
+          as="a"
+          href={"https://license.neonto.de"}
+          variant="inverse-primary"
+          className="p-4"
+        >
+          {"Activate your License now"}
         </Button>
         <span className="flex-grow-1" />
         <Button

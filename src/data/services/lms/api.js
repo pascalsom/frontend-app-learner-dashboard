@@ -20,6 +20,8 @@ export const initializeList = ({ user } = {}) => get(
   stringifyUrl(urls.getInitApiUrl(), { [apiKeys.user]: user }),
 );
 
+export const getUserMetadata = () => get(urls.getUserMetadataUrl());
+
 export const getProgramsConfig = () => get(urls.programsConfigUrl());
 
 export const updateEntitlementEnrollment = ({ uuid, courseId }) => post(
@@ -78,6 +80,7 @@ export default {
   unenrollFromCourse,
   updateEmailSettings,
   getProgramsConfig,
+  getUserMetadata,
   updateEntitlementEnrollment,
   deleteEntitlementEnrollment,
   logEvent,
