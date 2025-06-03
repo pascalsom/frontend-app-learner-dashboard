@@ -68,7 +68,7 @@ export const ExpandedHeader = () => {
               userMetadata === "" && (
                   <Button
                       as="a"
-                      href={urls.userProfileUrl(userMetadata.username)}
+                      href={"https://license.neonto.de"}
                       className={"mr-4"}
                       variant="primary"
                   >
