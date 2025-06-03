@@ -29,59 +29,65 @@ export const ExpandedHeader = () => {
   }
 
   return (
-    <header className="d-flex shadow-sm align-items-center learner-variant-header pl-4">
-      <div className="flex-grow-1 d-flex align-items-center">
-        <BrandLogo />
+      <header className="d-flex shadow-sm align-items-center learner-variant-header pl-4">
 
-        <Button
-          as="a"
-          href={`${getConfig().LMS_BASE_URL}/dashboard/`}
-          variant="inverse-primary"
-          className="p-4 course-link"
-        >
-          {formatMessage(messages.course)}
-        </Button>
-        {programsEnabled && (
+        <BrandLogo/>
+        <div className="d-flex align-items-center gap-2">
           <Button
-            as="a"
-            href={urls.programsUrl()}
-            variant="inverse-primary"
-            className="p-4"
+              as="a"
+              href={`${getConfig().LMS_BASE_URL}/dashboard/`}
+              variant="inverse-primary"
+              className="p-4 course-link"
           >
-            {formatMessage(messages.program)}
+            {formatMessage(messages.course)}
           </Button>
-        )}
-        <Button
-          as="a"
-          href={urls.baseAppUrl(courseSearchUrl)}
-          variant="inverse-primary"
-          className="p-4"
-          onClick={exploreCoursesClick}
-        >
-          {formatMessage(messages.discoverNew)}
-        </Button>
+          {programsEnabled && (
+              <Button
+                  as="a"
+                  href={urls.programsUrl()}
+                  variant="inverse-primary"
+                  className="p-4"
+              >
+                {formatMessage(messages.program)}
+              </Button>
+          )}
+          <Button
+              as="a"
+              href={urls.baseAppUrl(courseSearchUrl)}
+              variant="inverse-primary"
+              className="p-4"
+              onClick={exploreCoursesClick}
+          >
+            {formatMessage(messages.discoverNew)}
+          </Button>
+        </div>
+        <div className="flex-grow-1"/>
+        <div className={"d-flex align-items-center gap-2"}>
 
+          {
+              userMetadata === "" && (
+                  <Button
+                      as="a"
+                      href={urls.userProfileUrl(userMetadata.username)}
+                      className={"mr-4"}
+                      variant="primary"
+                  >
+                    {"Activate your License now"}
+                  </Button>
+              )
+          }
         <Button
-          as="a"
-          href={"https://license.neonto.de"}
-          variant="inverse-primary"
-          className="p-4"
-        >
-          {"Activate your License now"}
-        </Button>
-        <span className="flex-grow-1" />
-        <Button
-          as="a"
-          href={getConfig().SUPPORT_URL}
-          variant="inverse-primary"
-          className="p-4"
-        >
-          {formatMessage(messages.help)}
-        </Button>
-      </div>
+              as="a"
+              href={getConfig().SUPPORT_URL}
+              variant="inverse-primary"
+              className="p-4"
+          >
+            {formatMessage(messages.help)}
+          </Button>
 
-      <AuthenticatedUserDropdown />
-    </header>
+        <AuthenticatedUserDropdown/>
+          </div>
+      </header>
   );
 };
 
